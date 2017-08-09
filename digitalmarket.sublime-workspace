@@ -1,0 +1,244 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"border",
+				"border-color"
+			],
+			[
+				"col",
+				"col-sm-offset-3"
+			],
+			[
+				"from",
+				"from_email"
+			],
+			[
+				"con",
+				"contact_message"
+			],
+			[
+				"fo",
+				"forms"
+			],
+			[
+				"list",
+				"listNotes"
+			],
+			[
+				"simon",
+				"simonPic"
+			]
+		]
+	},
+	"buffers":
+	[
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 392.0,
+		"last_filter": "package",
+		"selected_items":
+		[
+			[
+				"package",
+				"Package Control: Install Package"
+			]
+		],
+		"width": 400.0
+	},
+	"console":
+	{
+		"height": 0.0,
+		"history":
+		[
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/C/Users/ASUS/Documents/python_work/trydjango18/src/templates/400.html",
+		"/C/Users/ASUS/Documents/python_work/trydjango18/src/templates/403.html",
+		"/C/Users/ASUS/Documents/python_work/trydjango18/src/templates/404.html",
+		"/C/Users/ASUS/Documents/python_work/trydjango18/src/trydjango18/settings/production.py",
+		"/C/Users/ASUS/Documents/python_work/trydjango18/src/templates/500.html",
+		"/C/Users/ASUS/Documents/python_work/trydjango18/src/trydjango18/settings/local.py",
+		"/C/Users/ASUS/Documents/python_work/trydjango18/webfaction/httpd.conf",
+		"/C/Users/ASUS/Documents/python_work/trydjango18/src/trydjango18/settings/__init__.py",
+		"/C/Users/ASUS/Documents/python_work/trydjango18/src/trydjango18/settings/base.py",
+		"/C/Users/ASUS/Documents/python_work/trydjango18/src/templates/home.html",
+		"/C/Users/ASUS/Documents/python_work/trydjango18/src/templates/about.html",
+		"/C/Users/ASUS/Documents/python_work/trydjango18/src/newsletter/views.py",
+		"/C/Users/ASUS/Documents/python_work/trydjango18/src/trydjango18/settings.py",
+		"/C/Users/ASUS/Documents/python_work/trydjango18/src/templates/forms.html",
+		"/C/Users/ASUS/Documents/python_work/trydjango18/src/trydjango18/views.py",
+		"/C/Users/ASUS/Documents/python_work/trydjango18/src/trydjango18/urls.py",
+		"/C/Users/ASUS/Documents/python_work/trydjango18/src/templates/registration/activation_email_subject.txt",
+		"/C/Users/ASUS/Documents/python_work/trydjango18/src/templates/navbar.html",
+		"/C/Users/ASUS/Documents/python_work/trydjango18/src/templates/base.html",
+		"/C/Users/ASUS/Documents/python_work/trydjango18/src/templates/head_css.html",
+		"/C/Users/ASUS/Documents/python_work/trydjango18/src/static_in_pro/our_static/css/navbar-static-top.css",
+		"/C/Users/ASUS/Documents/python_work/trydjango18/src/static_in_pro/our_static/css/custom.css",
+		"/C/Users/ASUS/Documents/python_work/trydjango18/src/newsletter/models.py",
+		"/C/Users/ASUS/Documents/python_work/trydjango18/src/newsletter/forms.py",
+		"/C/Users/ASUS/Documents/python_work/trydjango18/src/newsletter/admin.py",
+		"/C/Users/ASUS/Documents/python_work/trydjango18/src/templates/javascript.html",
+		"/C/Users/ASUS/Documents/python_work/trydjango18/src/static_in_pro/our_static/image/images.txt",
+		"/C/Users/ASUS/Documents/python_work/trydjango18/src/static_in_pro/our_static/blablabla.txt",
+		"/C/Users/ASUS/Documents/python_work/trydjango18/src/newsletter/templates/home.html",
+		"/C/Users/ASUS/Documents/python_work/trydjango18/src/newsletter/templates/home.tml",
+		"/C/Users/ASUS/Desktop/FeederApp/www/js/services.js",
+		"/C/Users/ASUS/Desktop/FeederApp/www/js/controllers.js",
+		"/C/Users/ASUS/Desktop/FeederApp/www/js/app.js",
+		"/C/Users/ASUS/Desktop/FeederApp/www/index.html",
+		"/C/Users/ASUS/Desktop/ToDoList/www/index.html",
+		"/C/Users/ASUS/Documents/E-LEARNING/Technology/Web Dev Files/trial.html",
+		"/C/Users/ASUS/Documents/E-LEARNING/Technology/Web Dev Files/events.html",
+		"/C/Users/ASUS/Documents/E-LEARNING/Technology/Web Dev Files/index.html",
+		"/C/Users/ASUS/Documents/SOFTWARE/html boilerplate/css/main.css",
+		"/C/Users/ASUS/Documents/SOFTWARE/html boilerplate/js/plugins.js",
+		"/C/Users/ASUS/Documents/SOFTWARE/html boilerplate/index.html",
+		"/C/Users/ASUS/Documents/Test File/index.html"
+	],
+	"find":
+	{
+		"height": 23.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			">\n",
+			"    \n",
+			"simon",
+			"brucePic",
+			"simon",
+			"html"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"sheets":
+			[
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 23.0
+	},
+	"input":
+	{
+		"height": 31.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"pinned_build_system": "",
+	"project": "digitalmarket.sublime-project",
+	"replace":
+	{
+		"height": 42.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": true,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 150.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}
