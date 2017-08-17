@@ -1,0 +1,17 @@
+{% extends "base.html" %} 
+
+{% block style %}
+h1 {
+	color: green;
+}
+{% endblock %}
+
+{% block content %}
+
+<h1>Product: {{ object }}</h1>  
+<p> {{ object.description }} </p>
+<p> {{ object.price }} </p>
+{% endblock content %}
+
+
+

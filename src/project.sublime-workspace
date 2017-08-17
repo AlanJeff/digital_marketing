@@ -4,54 +4,6 @@
 		"selected_items":
 		[
 			[
-				"micro",
-				"micro_created"
-			],
-			[
-				"sd_",
-				"sd_created"
-			],
-			[
-				"hd",
-				"hd_max"
-			],
-			[
-				"ma",
-				"max_length"
-			],
-			[
-				"media",
-				"media_path"
-			],
-			[
-				"thum",
-				"thumb_file"
-			],
-			[
-				"temp",
-				"temp_loc"
-			],
-			[
-				"Thum",
-				"ThumbnailInline"
-			],
-			[
-				"Http",
-				"Http404"
-			],
-			[
-				"Htp",
-				"HttpResponse"
-			],
-			[
-				"file",
-				"filepath"
-			],
-			[
-				"File",
-				"FileSystemStorage"
-			],
-			[
 				"h",
 				"Http404"
 			],
@@ -112,12 +64,11 @@
 	"buffers":
 	[
 		{
-			"file": "src/products/models.py",
+			"file": "templates/list_view.html",
 			"settings":
 			{
-				"buffer_size": 5455,
-				"encoding": "UTF-8",
-				"line_ending": "Unix"
+				"buffer_size": 92,
+				"line_ending": "Windows"
 			}
 		}
 	],
@@ -157,26 +108,26 @@
 	},
 	"expanded_folders":
 	[
-		"/C/Users/ASUS/Documents/python_work/Web Application/dm",
-		"/C/Users/ASUS/Documents/python_work/Web Application/dm/src",
-		"/C/Users/ASUS/Documents/python_work/Web Application/dm/src/products"
+		"/C/Users/ASUS/Documents/src",
+		"/C/Users/ASUS/Documents/src/digitalmarket",
+		"/C/Users/ASUS/Documents/src/products",
+		"/C/Users/ASUS/Documents/src/static",
+		"/C/Users/ASUS/Documents/src/static/css",
+		"/C/Users/ASUS/Documents/src/templates",
+		"/C/Users/ASUS/Documents/src/templates/products"
 	],
 	"file_history":
 	[
-		"/C/Users/ASUS/Documents/python_work/Web Application/dm/src/products/views.py",
-		"/C/Users/ASUS/Documents/python_work/Web Application/dm/src/digitalmarket/settings.py",
 		"/C/Users/ASUS/Documents/python_work/Web Application/dm/src/products/urls.py",
-		"/C/Users/ASUS/Documents/python_work/Web Application/dm/src/products/models.py",
-		"/C/Users/ASUS/Documents/python_work/Web Application/dm/src/templates/products/product_list.html",
-		"/C/Users/ASUS/Documents/python_work/Web Application/dm/src/templates/base.html",
-		"/C/Users/ASUS/Documents/python_work/Web Application/dm/src/templates/products/product_detail.html",
-		"/C/Users/ASUS/Documents/python_work/Web Application/dm/src/products/admin.py",
-		"/C/Users/ASUS/Documents/python_work/Web Application/dm/src/CRUD.md",
 		"/C/Users/ASUS/Documents/python_work/Web Application/dm/src/static/css/base.css",
-		"/C/Users/ASUS/Documents/python_work/Web Application/dm/static_cdn/media/babywei/base.css",
-		"/C/Users/ASUS/Documents/python_work/Web Application/dm/src/templates/list_view.html",
 		"/C/Users/ASUS/Documents/python_work/Web Application/dm/static_cdn/staticfiles/css/base.css",
 		"/C/Users/ASUS/Documents/python_work/Web Application/dm/src/digitalmarket/urls.py",
+		"/C/Users/ASUS/Documents/python_work/Web Application/dm/src/products/views.py",
+		"/C/Users/ASUS/Documents/python_work/Web Application/dm/src/templates/list_view.html",
+		"/C/Users/ASUS/Documents/python_work/Web Application/dm/src/templates/base.html",
+		"/C/Users/ASUS/Documents/python_work/Web Application/dm/src/digitalmarket/settings.py",
+		"/C/Users/ASUS/Documents/python_work/Web Application/dm/src/products/models.py",
+		"/C/Users/ASUS/Documents/python_work/Web Application/dm/static_cdn/media/babywei/base.css",
 		"/C/Users/ASUS/Documents/python_work/Web Application/dm/static_cdn/media/base.css",
 		"/C/Users/ASUS/Documents/python_work/Web Application/dm/src/templates/form.html",
 		"/C/Users/ASUS/Documents/python_work/Web Application/dm/src/templates/detail_view.html",
@@ -184,11 +135,14 @@
 		"/C/Users/ASUS/Documents/python_work/Web Application/dm/src/templates/form_include.html",
 		"/C/Users/ASUS/Documents/python_work/Web Application/dm/src/products/forms.py",
 		"/C/Users/ASUS/Documents/python_work/Web Application/dm/src/templates/create_view.html",
+		"/C/Users/ASUS/Documents/python_work/Web Application/dm/src/templates/products/product_list.html",
+		"/C/Users/ASUS/Documents/python_work/Web Application/dm/src/templates/products/product_detail.html",
 		"/C/Users/ASUS/Documents/python_work/Web Application/dm/src/digitalmarket/mixins.py",
 		"/C/Users/ASUS/Documents/python_work/Web Application/dm/src/products/mixins.py",
 		"/C/Users/ASUS/Documents/python_work/Web Application/dm/src/products/migrations/__init__.py",
 		"/C/Users/ASUS/Documents/python_work/Web Application/dm/src/db.sqlite3",
 		"/C/Users/ASUS/Documents/python_work/Web Application/dm/src/products/migrations/0006_auto_20170812_1058.py",
+		"/C/Users/ASUS/Documents/python_work/Web Application/dm/src/CRUD.md",
 		"/C/Users/ASUS/Documents/python_work/dm/src/digitalmarket/settings.py",
 		"/C/Users/ASUS/Documents/python_work/dm/src/CRUD.md",
 		"/C/Users/ASUS/Documents/python_work/dm/src/products/admin.py",
@@ -252,10 +206,6 @@
 		"case_sensitive": false,
 		"find_history":
 		[
-			"path",
-			"GET",
-			"title",
-			"ProductDownloadView",
 			">\n",
 			"    \n",
 			"simon",
@@ -284,28 +234,27 @@
 			[
 				{
 					"buffer": 0,
-					"file": "src/products/models.py",
-					"semi_transient": false,
+					"file": "templates/list_view.html",
+					"semi_transient": true,
 					"settings":
 					{
-						"buffer_size": 5455,
+						"buffer_size": 92,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								3447,
-								3447
+								0,
+								0
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/Python/Python.sublime-syntax",
-							"translate_tabs_to_spaces": false
+							"syntax": "Packages/HTML/HTML.sublime-syntax"
 						},
 						"translation.x": 0.0,
-						"translation.y": 1575.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,
@@ -350,7 +299,7 @@
 		"height": 0.0
 	},
 	"pinned_build_system": "",
-	"project": "digitalmarket.sublime-project",
+	"project": "project.sublime-project",
 	"replace":
 	{
 		"height": 42.0
@@ -391,7 +340,7 @@
 	"show_open_files": true,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 233.0,
+	"side_bar_width": 203.0,
 	"status_bar_visible": true,
 	"template_settings":
 	{

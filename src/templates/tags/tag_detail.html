@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% load get_thumbnail %}
+
+
+{% block content %}
+
+<ul>
+<!-- For a ManyToManyField you can just do abc.all -->
+{% for product_instance in object.products.all %}
+<!-- Everything in here is related to the products under a particular tag -->
+
+    <li>
+    	<!-- For a ForeignKey you have to do abc_set.all -->
+    	<!-- {{ product_instance }}
+    	{{ product_instance.thumbnail_set.all }}
+    	{{ product_instance.thumbnail_set.all.first }}
+    	{{ product_instance.thumbnail_set.all.first.media }} -->
+    	<a href='{{ product_instance.get_absolute_url }}'><img src='{{ product_instance|get_thumbnail:"sd" }}'></a>
+    </li>
+
+{% empty %}
+    <li>No Tags yet.</li>
+
+{% endfor %}
+</ul>
+
+
+{% endblock %}
