@@ -28,8 +28,8 @@ class ProductAddForm(forms.Form):
 		price = self.cleaned_data.get("price")
 		if price <= 1.00:
 			raise forms.ValidationError("Price must be greater than $1.00")
-		elif price >= 99.99:
-			raise forms.ValidationError("Price must be less than $100.00")
+		elif price >= 999.99:
+			raise forms.ValidationError("Price must be less than $1000.00")
 		else:
 			return price 
 
@@ -73,8 +73,8 @@ class ProductModelForm(forms.ModelForm):
 		price = self.cleaned_data.get("price")
 		if price <= 1.00:
 			raise forms.ValidationError("Price must be greater than $1.00")
-		elif price >= 99.99:
-			raise forms.ValidationError("Price must be less than $100.00")
+		elif price >= 999.99:
+			raise forms.ValidationError("Price must be less than $1000.00")
 		else:
 			return price 
 

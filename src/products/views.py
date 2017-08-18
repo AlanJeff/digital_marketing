@@ -12,6 +12,7 @@ from django.views.generic.detail import DetailView
 from django.views.generic.edit import CreateView, UpdateView
 from django.views.generic.list import ListView 
 
+from analytics.models import TagView
 from digitalmarket.mixins import (
 			LoginRequiredMixin,
 			MultiSlugMixin, 
@@ -37,6 +38,13 @@ class ProductCreateView(LoginRequiredMixin, SubmitBtnMixin, CreateView):
 		valid_data = super(ProductCreateView, self).form_valid(form)
 		form.instance.managers.add(user)
 		# add all default users
+		tags = form.cleaned_data.get("tags")
+		if tags:
+			tags_list = tags.split(",")
+			for tag in tags_list:
+				if not tag == " ":
+					new_tag = Tag.objects.get_or_create(title=str(tag).strip())[0]
+					new_tag.products.add(form.instance)
 		return valid_data
 
 	# Only use success_url when you want a diff redirect from
@@ -70,19 +78,30 @@ class ProductUpdateView(ProductManagerMixin, SubmitBtnMixin, MultiSlugMixin, Upd
 	def form_valid(self, form):
 		valid_data = super(ProductUpdateView, self).form_valid(form)
 		tags = form.cleaned_data.get("tags")
+		obj = self.get_object()
+		obj.tag_set.clear()
 		if tags:
 			# return a comma separated list
 			tags_list = tags.split(",")
 			for tag in tags_list:
-				# creating a new Tag instance which title is based on the user-inputted tag
-				new_tag = Tag.objects.get_or_create(title=str(tag).strip())[0]
-				# add it to the many to many field
-				new_tag.products.add(self.get_object())
+				if not tag == " ":
+					# creating a new Tag instance which title is based on the user-inputted tag
+					new_tag = Tag.objects.get_or_create(title=str(tag).strip())[0]
+					# add it to the many to many field (associate the product instance to that tag)
+					new_tag.products.add(self.get_object())
 		return valid_data
 
 
 class ProductDetailView(MultiSlugMixin, DetailView):
 	model = Product 
+
+	def get_context_data(self, *args, **kwargs):
+		context = super(ProductDetailView, self).get_context_data(*args, **kwargs)
+		obj = self.get_object()
+		tags = obj.tag_set.all()
+		for tag in tags:
+			new_view = TagView.objects.add_count(self.request.user, tag)
+		return context
 
 	# def get_object(self, *args, **kwargs):
 	# 	slug = self.kwargs.get("slug")

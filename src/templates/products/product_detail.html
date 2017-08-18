@@ -1,28 +1,74 @@
 {% extends "base.html" %} 
 
-{% block style %}
-h1 {
-	color: green;
-}
-{% endblock %}
+<script>
+$(document).ready(function(){
+	{% block jquery %}
+	$("#purchase-btn").click(function(event){
+		event.preventDefault()
+		$("#dialog-confirm").fadeIn("300")
+		$("#dialog-confirm").dialog({
+			resizable: false,
+			height: 350,
+			width: 350,
+			modal: true,
+			buttons: {
+				1: {
+					id: "close",
+					text: "Confirm",
+					click: function(){
+						console.log("confirm")
+						$(this).dialog("close")
+					}, 
+					class: "buy-btn"
+				},
+				2: {
+					id: "close",
+					text: "Cancel",
+					click: function(){
+						$(this).dialog("close")
+					}, 
+					class: "cancel-btn"
+				}
+			}
+		})
+	})
+	{% endblock jquery %}
+})
+</script>
+
+
 
 {% block content %}
 
-<h1>Product: {{ object.title }}</h1>  
-<p> {{ object.description }} </p>
-<p> {{ object.price }} </p>
+<div class='col-primary pull-left'>
+	<h1>Product: {{ object.title }}</h1>  
+	<p> {{ object.description }} </p>
+	<p> {{ object.price }} </p>
 
-<!-- Since it's a foreign key you use thumbnail_set -->
-{% for img in object.thumbnail_set.all %}
-<img src="{{ img.media.url }}" />
+	<!-- Since it's a foreign key you use thumbnail_set -->
+	{% for img in object.thumbnail_set.all %}
+	<img src="{{ img.media.url }}" />
 
-{% endfor %}
+	{% endfor %}
+</div>
 
-{% if request.user.is_authenticated and object.media and object in request.user.myproducts.products.all %}
-<p><a href="{{ object.get_download }}">Download</a></p>
-<p><a href="{{ object.get_download }}?preview=True">Preview</a></p>
-{% endif %}
 
+<div class='col-sidebar pull-right'>
+	{% if request.user.is_authenticated and object.media and object in request.user.myproducts.products.all %}
+
+	<p><a href="{{ object.get_download }}">Download</a></p>
+	<p><a href="{{ object.get_download }}?preview=True">Preview</a></p>
+	
+	{% else %}
+	<p><a id="purchase-btn" href="#">Purchase</a></p>
+	<div id="dialog-confirm" title="Confirm Purchase" style="display:none">
+		<p>Your card on file will be charged after you agree below</p>
+	</div>
+	{% endif %}
+</div>
+
+
+<div class='clearfix'></div>
 {% endblock content %}
 
 

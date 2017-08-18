@@ -4,24 +4,87 @@
 <html>
 
 <head>
+	<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 	<link rel="stylesheet" type="text/css" href="{% static 'css/base.css' %}" />
 
 <style>
 .main-content {
 	width: 800px;
 	margin: 0 auto;
+	clear: both;
 }
-{% block style %}
-{% endblock style %}
+.main-nav {
+	width: 800px;
+	margin: 10px auto;
+}
+.main-nav li {
+	display: inline;
+}
+.first-nav {
+	padding-left: 0;
+}
+.pull-right {
+	float: right;
+}
+.pull-left {
+	float: left;
+}
+.col-primary {
+	width: 70%;
+}
+.col-sidebar {
+	padding-top: 20px;
+	width: 15%;
+}
+.clearfix {
+	clear: both;
+}
+
+button.buy-btn {
+	border: 1px solid #DA5B00 !important;
+	background: #DA5B00 !important;
+}
+
+button.buy-btn .ui-button-text {
+	color: #fff;
+}
+
+.ui-widget-header {
+	border: 1px solid #ffffff !important;
+	background: #ffffff !important;
+}
+
+{% block style %}{% endblock style %}
 </style>
 
 </head>
 
 
 <body>
+<nav class='main-nav'>
+	<ul class="pull-left first-nav">
+		<li><a href="{% url 'dashboard' %}">Digital Marketplace</a></li>
+	</ul>
+	<ul class="pull-right">
+		<li><a href="{% url 'products:list' %}">Products</a></li>
+		<li><a href="{% url 'tags:list' %}">Tags</a></li>
+		<li><a href="#">Library</a></li>
+	</ul>
+</nav>
+
 <div class='main-content'>
 {% block content %}{% endblock content %}
 </div>
+
+<script src="http://code.jquery.com/jquery-1.12.4.min.js"></script>
+<script src="http://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
+<script>
+$(document).ready(function(){
+	{% block jquery %}
+
+	{% endblock jquery %}
+})
+</script>
 </body>	
 
 </html>
