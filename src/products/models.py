@@ -5,17 +5,21 @@ from django.db.models.signals import pre_save, post_save
 from django.core.urlresolvers import reverse
 from django.utils.text import slugify 
 
+from sellers.models import SellerAccount
 
 def download_media_location(instance, filename):
 	return "%s/%s" %(instance.slug, filename)
 
 class Product(models.Model):
+	"""
 	# Each product - 1 user, Each user - 1 product
-	#user = models.OneToOneField(settings.AUTH_USER_MODEL)
+	# user = models.OneToOneField(settings.AUTH_USER_MODEL)
 	# Each product - 1 user, Each user - multiple products
 	user = models.ForeignKey(settings.AUTH_USER_MODEL)
 	# Each product - multiple users, Each user - multiple products
 	managers = models.ManyToManyField(settings.AUTH_USER_MODEL, related_name="managers_products", blank=True)
+	"""
+	seller = models.ForeignKey(SellerAccount)
 	media = models.ImageField(blank=True, 
 				null=True, 
 				upload_to=download_media_location,
@@ -24,6 +28,7 @@ class Product(models.Model):
 	slug = models.SlugField(blank=True, unique=True)
 	description = models.TextField()
 	price = models.DecimalField(max_digits=100, decimal_places=2, default=9.99) 
+	sale_active = models.BooleanField(default=False)
 	sale_price = models.DecimalField(max_digits=100, 
 		decimal_places=2, default=9.99, null=True, blank=True)
 
@@ -40,6 +45,14 @@ class Product(models.Model):
 		view_name = "products:download_slug"
 		url = reverse(view_name, kwargs={"slug": self.slug})
 		return url 
+
+	# property turns the f(x) into an attribute of this instance
+	# calling can just be get_price instead of get_price()
+	@property
+	def get_price(self):
+		if self.sale_price and self.sale_active:
+			return self.sale_price
+		return self.price 
 
 def create_slug(instance, new_slug=None):
 	slug = slugify(instance.title)

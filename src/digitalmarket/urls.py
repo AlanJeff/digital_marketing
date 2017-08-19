@@ -18,14 +18,17 @@ from django.conf.urls import include, url
 from django.conf.urls.static import static
 from django.contrib import admin
 
-from checkout.views import CheckoutTestView
+from checkout.views import CheckoutTestView, CheckoutAjaxView
 from dashboard.views import DashboardView
+
 
 urlpatterns = [
     url(r'^$', DashboardView.as_view(), name='dashboard'),
     url(r'^test/$', CheckoutTestView.as_view(), name='test'),
+    url(r'^checkout/$', CheckoutAjaxView.as_view(), name='checkout'),
     url(r'^admin/', include(admin.site.urls)),
     url(r'^products/', include("products.urls", namespace='products')),
+    url(r'^seller/', include("sellers.urls", namespace='sellers')),
     url(r'^tags/', include("tags.urls", namespace='tags')),
 ]
 
