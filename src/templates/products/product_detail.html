@@ -1,67 +1,158 @@
 {% extends "base.html" %} 
 
+<style>
+{% block style %}
+.rating {
+    float:left;
+    width: 200px;
+}
+
+/* :not(:checked) is a filter, so that browsers that don’t support :checked don’t 
+   follow these rules. Every browser that supports :checked also supports :not(), so
+   it doesn’t make the test unnecessarily selective */
+.rating:not(:checked) > input {
+    position:absolute;
+    top:-9999px;
+    clip:rect(0,0,0,0);
+}
+
+.rating:not(:checked) > label {
+    float:right;
+    width:1em;
+    padding:0 .1em;
+    overflow:hidden;
+    white-space:nowrap;
+    cursor:pointer;
+    font-size:200%;
+    line-height:1.2;
+    color:#ddd;
+    text-shadow:1px 1px #bbb, 2px 2px #666, .1em .1em .2em rgba(0,0,0,.5);
+}
+
+.rating:not(:checked) > label:before {
+    content: '★ ';
+}
+
+.rating > input:checked ~ label {
+    color: #f70;
+    text-shadow:1px 1px #c60, 2px 2px #940, .1em .1em .2em rgba(0,0,0,.5);
+}
+
+.rating:not(:checked) > label:hover,
+.rating:not(:checked) > label:hover ~ label {
+    color: gold;
+    text-shadow:1px 1px goldenrod, 2px 2px #B57340, .1em .1em .2em rgba(0,0,0,.5);
+}
+
+.rating > input:checked + label:hover,
+.rating > input:checked + label:hover ~ label,
+.rating > input:checked ~ label:hover,
+.rating > input:checked ~ label:hover ~ label,
+.rating > label:hover ~ input:checked ~ label {
+    color: #ea0;
+    text-shadow:1px 1px goldenrod, 2px 2px #B57340, .1em .1em .2em rgba(0,0,0,.5);
+}
+
+.rating > label:active {
+    position:relative;
+    top:2px;
+    left:2px;
+}
+{% endblock style %}
+</style>
+
 <script>
 $(document).ready(function(){
-	{% block jquery %}
-	$("#purchase-btn").click(function(event){
-		event.preventDefault()
-		var purchaseBtn = $(this)
-		$("#dialog-confirm").fadeIn("300")
-		$("#dialog-confirm").dialog({
-			resizable: false,
-			height: 350,
-			width: 350,
-			modal: true,
-			buttons: {
-				1: {
-					id: "close",
-					text: "Confirm",
-					click: function(){
-						console.log("confirm")
-						var request = $.ajax({
-							method: "POST",
-							url: "{% url 'checkout' %}",
-							data: {
-								product_id: "{{object.id}}",
-								
-							}
-						})
-						request.done(function(data){
-							console.log(data.download)
-							console.log(data.preview)
-							purchaseBtn.before("<p><a href='" + data.download + "'>Download</p><p><a href='" + data.preview + "'>Preview</p>")
-							purchaseBtn.fadeOut(100)
-							// console.log("working...")
-							// if (data.works) {
-							// 	$("#content").html("Hello there!" + data.time)
-							// }
-						})
-						request.fail(function(jqXHR, textStatus){
-							if (jqXHR.status == 404) {
-								alert("Page not found!")
-							} else if (jqXHR.status == 403) {
-								alert("You must be logged in to do this.")
-							} else {
-								alert("There was an error with your request. Please try again.")
-							}
-						})
+{% block jquery %}
 
-						$(this).dialog("close")
-					}, 
-					class: "buy-btn"
-				},
-				2: {
-					id: "close",
-					text: "Cancel",
-					click: function(){
-						$(this).dialog("close")
-					}, 
-					class: "cancel-btn"
-				}
-			}
-		})
+// showing the rating to the user
+$(".rating input[value='{{ my_rating }}']").attr("checked", "checked")
+
+$(".rating input[type='radio']").click(function(event){
+	var inputValue = $(this).val()
+	var request = $.ajax({
+		method: "POST",
+		url: "{% url 'products:ajax_rating' %}",
+		data: {
+			product_id: "{{object.id}}",
+			rating_value: inputValue,
+		}
 	})
-	{% endblock jquery %}
+	request.done(function(data){
+		
+	})
+	request.fail(function(jqXHR, textStatus){
+		if (jqXHR.status == 404) {
+			alert("Page not found!")
+		} else if (jqXHR.status == 401) {
+			alert("You must be logged in to do this.")
+		} else {
+			alert("There was an error with your request. Please try again.")
+		}
+	})
+})
+
+
+$("#purchase-btn").click(function(event){
+	event.preventDefault()
+	var purchaseBtn = $(this)
+	$("#dialog-confirm").fadeIn("300")
+	$("#dialog-confirm").dialog({
+		resizable: false,
+		height: 350,
+		width: 350,
+		modal: true,
+		buttons: {
+			1: {
+				id: "close",
+				text: "Confirm",
+				click: function(){
+					console.log("confirm")
+					var request = $.ajax({
+						method: "POST",
+						url: "{% url 'checkout' %}",
+						data: {
+							product_id: "{{object.id}}",
+							
+						}
+					})
+					request.done(function(data){
+						console.log(data.download)
+						console.log(data.preview)
+						purchaseBtn.before("<p><a href='" + data.download + "'>Download</p><p><a href='" + data.preview + "'>Preview</p>")
+						purchaseBtn.fadeOut(100)
+
+						// console.log("working...")
+						// if (data.works) {
+						// 	$("#content").html("Hello there!" + data.time)
+						// }
+					})
+					request.fail(function(jqXHR, textStatus){
+						if (jqXHR.status == 404) {
+							alert("Page not found!")
+						} else if (jqXHR.status == 403) {
+							alert("You must be logged in to do this.")
+						} else {
+							alert("There was an error with your request. Please try again.")
+						}
+					})
+
+					$(this).dialog("close")
+				}, 
+				class: "buy-btn"
+			},
+			2: {
+				id: "close",
+				text: "Cancel",
+				click: function(){
+					$(this).dialog("close")
+				}, 
+				class: "cancel-btn"
+			}
+		}
+	})
+})
+{% endblock jquery %}
 })
 </script>
 
@@ -70,9 +161,10 @@ $(document).ready(function(){
 {% block content %}
 
 <div class='col-primary pull-left'>
-	<h1>Product: {{ object.title }}</h1>  
+	<h1>Product: {{ object.title }} <small>by: <a href="{{ object.seller.get_absolute_url }}">{{ object.seller.user.username }}</a></small> </h1>  
 	<p> {{ object.description }} </p>
-	<p> {{ object.price }} </p>
+	<p> {{ object.get_html_price|safe }} </p>
+	<p>Purchases: {{ object.transaction_set.count }} </p>
 
 	<!-- Since it's a foreign key you use thumbnail_set -->
 	{% for img in object.thumbnail_set.all %}
@@ -83,17 +175,36 @@ $(document).ready(function(){
 
 
 <div class='col-sidebar pull-right'>
-	{% if request.user.is_authenticated and object.media and object in request.user.myproducts.products.all %}
+	{% if request.user.is_authenticated and object in request.user.myproducts.products.all %}
+		{% if object.media %}
+		<p><a href="{{ object.get_download }}">Download</a></p>
+		<p><a href="{{ object.get_download }}?preview=True">Preview</a></p>
+		{% else %}
+		<p>Product is coming soon for download</p>
+		{% endif %}
 
-	<p><a href="{{ object.get_download }}">Download</a></p>
-	<p><a href="{{ object.get_download }}?preview=True">Preview</a></p>
-	
 	{% else %}
-	<p><a id="purchase-btn" href="#">Purchase</a></p>
-	<div id="dialog-confirm" title="Confirm Purchase" style="display:none">
-		<p>Your card on file will be charged after you agree below</p>
-	</div>
+		<p><a id="purchase-btn" href="#">{% if object.media %}Purchase{% else %}Pre-Order{% endif %}</a></p>
+		<div id="dialog-confirm" title="Confirm Purchase" style="display:none">
+			<p>Your card on file will be charged after you agree below</p>
+		</div>
+
 	{% endif %}
+
+	<strong>My Rating</strong>
+	<div class="rating">
+    <input type="radio" id="star5" name="rating" value="5" /><label for="star5" title="Rocks!">5 stars</label>
+    <input type="radio" id="star4" name="rating" value="4" /><label for="star4" title="Pretty good">4 stars</label>
+    <input type="radio" id="star3" name="rating" value="3" /><label for="star3" title="Meh">3 stars</label>
+    <input type="radio" id="star2" name="rating" value="2" /><label for="star2" title="Kinda bad">2 stars</label>
+    <input type="radio" id="star1" name="rating" value="1" /><label for="star1" title="Sucks big time">1 star</label>
+	</div>
+	<br>
+	<p>
+		{{rating_avg.rating__avg}} Average Rating by {{rating_avg.rating__count}} Users. 
+	</p>
+
+  
 </div>
 
 

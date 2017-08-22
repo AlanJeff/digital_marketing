@@ -1,15 +1,44 @@
+
+
 from django.shortcuts import render
 from django.views.generic import View
+from django.views.generic.base import RedirectView
 from django.views.generic.edit import FormMixin
+from django.views.generic.list import ListView
+from django.shortcuts import get_object_or_404
 
-
-# Create your views here.
+from billing.models import Transaction
 from digitalmarket.mixins import LoginRequiredMixin
+from products.models import Product 
 
 from .forms import NewSellerForm
+from .mixins import SellerAccountMixin
 from .models import SellerAccount
 
-class SellerDashboard(LoginRequiredMixin, FormMixin, View):
+
+class SellerProductDetailRedirectView(RedirectView):
+    permanent = True
+    # query_string = True
+    # pattern_name = 'article-detail'
+
+    def get_redirect_url(self, *args, **kwargs):
+        obj = get_object_or_404(Product, pk=kwargs['pk'])
+        return obj.get_absolute_url()
+
+
+class SellerTransactionListView(SellerAccountMixin, ListView):
+	model = Transaction 
+	template_name = "sellers/transaction_list_view.html"
+
+	def get_queryset(self):
+		return self.get_transactions()
+		# account = SellerAccount.objects.filter(user=self.request.user)
+		# if account.exists():
+		# 	products = Product.objects.filter(seller=account)
+		# 	return Transaction.objects.filter(product__in=products)
+		# return []
+
+class SellerDashboard(SellerAccountMixin, FormMixin, View):
 	form_class = NewSellerForm
 	success_url = "/seller/"
 
@@ -21,19 +50,15 @@ class SellerDashboard(LoginRequiredMixin, FormMixin, View):
 			return self.form_invalid(form)
 
 	def get(self, request, *args, **kwargs):
-		apply_form = NewSellerForm()
-		account = SellerAccount.objects.filter(user=self.request.user)
-		exists = account.exists()
+		apply_form = self.get_form()  #NewSellerForm()
+		account = self.get_account()
+		exists = account
 		active = None
 		context = {}
 
 		if exists:
-			account = account.first()
 			active = account.active
 
-		#if not exists, show form
-		#if exists and no active, show pending
-		#if exists and active, show dashboard
 		if not exists and not active:
 			context["title"] = "Apply for Account"
 			context["apply_form"] = apply_form
@@ -41,7 +66,14 @@ class SellerDashboard(LoginRequiredMixin, FormMixin, View):
 			context["title"] = "Account Pending"
 		elif exists and active:
 			context["title"] = "Seller Dashboard"
-		else:
+			# products = Product.objects.filter(seller=account)
+			context["products"] = self.get_products()
+			transactions_today = self.get_transactions_today()
+			context["transactions_today"] = transactions_today
+			context["today_sales"] = self.get_today_sales()
+			context["total_sales"] = self.get_total_sales()
+			context["transactions"] = self.get_transactions().exclude(pk__in=transactions_today)[:5]
+		else:	
 			pass
 
 		return render(request, "sellers/dashboard.html", context)

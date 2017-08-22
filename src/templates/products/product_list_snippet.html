@@ -8,7 +8,7 @@
 	    	<img src='{{ instance|get_thumbnail:"micro" }}'></a>
 		{% endif %}
 	    <br/>
-		{{ instance.price }}
+		{{ instance.get_html_price|safe }}
 	</li>
 
 {% empty %}

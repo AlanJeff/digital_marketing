@@ -4,6 +4,106 @@
 		"selected_items":
 		[
 			[
+				"rece",
+				"recent_transactions"
+			],
+			[
+				"tran",
+				"transactions"
+			],
+			[
+				"rating",
+				"rating_avg"
+			],
+			[
+				"my",
+				"my_rating"
+			],
+			[
+				"Tra",
+				"TransactionAdmin"
+			],
+			[
+				"P",
+				"ProductDetailView"
+			],
+			[
+				"pro",
+				"products"
+			],
+			[
+				"Mul",
+				"MultipleObjectsReturned"
+			],
+			[
+				"pr",
+				"product_list"
+			],
+			[
+				"to",
+				"today_max"
+			],
+			[
+				"today",
+				"today_min"
+			],
+			[
+				"get",
+				"get_transactions"
+			],
+			[
+				"date",
+				"datetime"
+			],
+			[
+				"templat",
+				"template_name"
+			],
+			[
+				"Seller",
+				"SellerAccount"
+			],
+			[
+				"reload",
+				"reload_page"
+			],
+			[
+				"Product",
+				"ProductDetailView"
+			],
+			[
+				"product",
+				"product_obj"
+			],
+			[
+				"See",
+				"SellerAccount"
+			],
+			[
+				"Se",
+				"SellerAccount"
+			],
+			[
+				"downl",
+				"download_link"
+			],
+			[
+				"__",
+				"__name__"
+			],
+			[
+				"produc",
+				"product_id"
+			],
+			[
+				"CH",
+				"CheckoutAjaxView"
+			],
+			[
+				"te",
+				"textStatus"
+			],
+			[
 				"dat",
 				"datetime"
 			],
@@ -28,10 +128,6 @@
 				"new_view"
 			],
 			[
-				"get",
-				"get_object"
-			],
-			[
 				"anal",
 				"analytic_obj"
 			],
@@ -54,10 +150,6 @@
 			[
 				"clean",
 				"cleaned_data"
-			],
-			[
-				"Product",
-				"ProductUpdateView"
 			],
 			[
 				"micro",
@@ -168,28 +260,54 @@
 	"buffers":
 	[
 		{
+			"file": "src/templates/products/product_detail.html",
+			"settings":
+			{
+				"buffer_size": 5494,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "src/sellers/views.py",
+			"settings":
+			{
+				"buffer_size": 2748,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "src/sellers/mixins.py",
+			"settings":
+			{
+				"buffer_size": 1525,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "src/templates/sellers/dashboard.html",
+			"settings":
+			{
+				"buffer_size": 1215,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "src/templates/sellers/transaction_list.html",
+			"settings":
+			{
+				"buffer_size": 348,
+				"line_ending": "Windows"
+			}
+		},
+		{
 			"file": "src/checkout/views.py",
 			"settings":
 			{
-				"buffer_size": 547,
-				"encoding": "UTF-8",
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "src/templates/checkout/test.html",
-			"settings":
-			{
-				"buffer_size": 863,
-				"encoding": "UTF-8",
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "src/templates/base.html",
-			"settings":
-			{
-				"buffer_size": 1530,
+				"buffer_size": 1897,
 				"line_ending": "Windows"
 			}
 		}
@@ -232,31 +350,59 @@
 	[
 		"/C/Users/ASUS/Documents/python_work/Web Application/dm",
 		"/C/Users/ASUS/Documents/python_work/Web Application/dm/src",
+		"/C/Users/ASUS/Documents/python_work/Web Application/dm/src/billing",
 		"/C/Users/ASUS/Documents/python_work/Web Application/dm/src/checkout",
+		"/C/Users/ASUS/Documents/python_work/Web Application/dm/src/dashboard",
 		"/C/Users/ASUS/Documents/python_work/Web Application/dm/src/digitalmarket",
-		"/C/Users/ASUS/Documents/python_work/Web Application/dm/src/static/css",
+		"/C/Users/ASUS/Documents/python_work/Web Application/dm/src/products",
+		"/C/Users/ASUS/Documents/python_work/Web Application/dm/src/sellers",
 		"/C/Users/ASUS/Documents/python_work/Web Application/dm/src/templates",
 		"/C/Users/ASUS/Documents/python_work/Web Application/dm/src/templates/dashboard",
 		"/C/Users/ASUS/Documents/python_work/Web Application/dm/src/templates/products",
-		"/C/Users/ASUS/Documents/python_work/Web Application/dm/src/templates/tags",
-		"/C/Users/ASUS/Documents/python_work/Web Application/dm/static_cdn/staticfiles",
-		"/C/Users/ASUS/Documents/python_work/Web Application/dm/static_cdn/staticfiles/css"
+		"/C/Users/ASUS/Documents/python_work/Web Application/dm/src/templates/sellers"
 	],
 	"file_history":
 	[
-		"/C/Users/ASUS/Documents/python_work/Web Application/dm/src/digitalmarket/urls.py",
+		"/C/Users/ASUS/Documents/python_work/Web Application/dm/src/templates/sellers/transaction_list.html",
+		"/C/Users/ASUS/Documents/python_work/Web Application/dm/src/templates/sellers/transaction_list_view.html",
+		"/C/Users/ASUS/Documents/python_work/Web Application/dm/src/sellers/mixins.py",
+		"/C/Users/ASUS/Documents/python_work/Web Application/dm/src/products/models.py",
 		"/C/Users/ASUS/Documents/python_work/Web Application/dm/src/templates/products/product_list_snippet.html",
-		"/C/Users/ASUS/Documents/python_work/Web Application/dm/src/templates/products/product_list.html",
-		"/C/Users/ASUS/Documents/python_work/Web Application/dm/src/templates/dashboard/view.html",
-		"/C/Users/ASUS/Documents/python_work/Web Application/dm/src/templates/base.html",
 		"/C/Users/ASUS/Documents/python_work/Web Application/dm/src/templates/products/product_detail.html",
+		"/C/Users/ASUS/Documents/python_work/Web Application/dm/src/digitalmarket/urls.py",
+		"/C/Users/ASUS/Documents/python_work/Web Application/dm/src/products/views.py",
+		"/C/Users/ASUS/Documents/python_work/Web Application/dm/src/templates/products/library_list.html",
+		"/C/Users/ASUS/Documents/python_work/Web Application/dm/src/templates/base.html",
+		"/C/Users/ASUS/Documents/python_work/Web Application/dm/src/templates/products/product_list.html",
+		"/C/Users/ASUS/Documents/python_work/Web Application/dm/src/sellers/views.py",
+		"/C/Users/ASUS/Documents/python_work/Web Application/dm/src/billing/models.py",
+		"/C/Users/ASUS/Documents/python_work/Web Application/dm/src/products/admin.py",
+		"/C/Users/ASUS/Documents/python_work/Web Application/dm/src/billing/admin.py",
+		"/C/Users/ASUS/Documents/python_work/Web Application/dm/src/sellers/admin.py",
+		"/C/Users/ASUS/Documents/python_work/Web Application/dm/src/templates/sellers/dashboard.html",
+		"/C/Users/ASUS/Documents/python_work/Web Application/dm/src/billing/views.py",
+		"/C/Users/ASUS/Documents/python_work/Web Application/dm/src/checkout/views.py",
+		"/C/Users/ASUS/Documents/python_work/Web Application/dm/src/templates/dashboard/view.html",
+		"/C/Users/ASUS/Documents/python_work/Web Application/dm/src/templates/sellers/product_list_view.html",
+		"/C/Users/ASUS/Documents/python_work/Web Application/dm/src/dashboard/views.py",
+		"/C/Users/ASUS/Documents/python_work/Web Application/dm/src/digitalmarket/mixins.py",
+		"/C/Users/ASUS/Documents/python_work/Web Application/dm/src/products/migrations/0013_productrating.py",
+		"/C/Users/ASUS/Documents/python_work/Web Application/dm/src/products/urls.py",
+		"/C/Users/ASUS/Documents/python_work/Web Application/dm/src/sellers/urls.py",
+		"/C/Users/ASUS/Documents/python_work/Web Application/dm/src/products/mixins.py",
+		"/C/Users/ASUS/Documents/python_work/Web Application/dm/src/templates/sellers/mixins.py",
+		"/C/Users/ASUS/Documents/python_work/Web Application/dm/src/templates/detail_view.html",
+		"/C/Users/ASUS/Documents/python_work/Web Application/dm/src/products_backup.json",
+		"/C/Users/ASUS/Documents/python_work/Web Application/dm/src/digitalmarket/settings.py",
+		"/C/Users/ASUS/Documents/python_work/Web Application/dm/src/sellers/forms.py",
+		"/C/Users/ASUS/Documents/python_work/Web Application/dm/src/sellers/models.py",
+		"/C/Users/ASUS/Documents/python_work/Web Application/dm/src/digitalmarket/decorators.py",
+		"/C/Users/ASUS/Documents/python_work/Web Application/dm/src/templates/checkout/test.html",
+		"/C/Users/ASUS/Documents/python_work/Web Application/dm/src/static/js/django.csrf.js",
 		"/C/Users/ASUS/Documents/python_work/Web Application/dm/src/static/css/base.css",
 		"/C/Users/ASUS/Documents/python_work/Web Application/dm/src/products/forms.py",
 		"/C/Users/ASUS/Documents/python_work/Web Application/dm/src/analytics/models.py",
-		"/C/Users/ASUS/Documents/python_work/Web Application/dm/src/digitalmarket/settings.py",
 		"/C/Users/ASUS/Documents/python_work/Web Application/dm/src/tags/views.py",
-		"/C/Users/ASUS/Documents/python_work/Web Application/dm/src/dashboard/views.py",
-		"/C/Users/ASUS/Documents/python_work/Web Application/dm/src/products/views.py",
 		"/C/Users/ASUS/Documents/python_work/Web Application/dm/src/products/templatetags/get_thumbnail.py",
 		"/C/Users/ASUS/Documents/python_work/Web Application/dm/src/analytics/admin.py",
 		"/C/Users/ASUS/Documents/python_work/Web Application/dm/src/tags/models.py",
@@ -265,21 +411,15 @@
 		"/C/Users/ASUS/Documents/python_work/Web Application/dm/src/products/templatetags/__init__.py",
 		"/C/Users/ASUS/Documents/python_work/Web Application/dm/src/tags/admin.py",
 		"/C/Users/ASUS/Documents/python_work/Web Application/dm/src/tags/urls.py",
-		"/C/Users/ASUS/Documents/python_work/Web Application/dm/src/products/models.py",
-		"/C/Users/ASUS/Documents/python_work/Web Application/dm/src/products/urls.py",
-		"/C/Users/ASUS/Documents/python_work/Web Application/dm/src/products/admin.py",
 		"/C/Users/ASUS/Documents/python_work/Web Application/dm/src/CRUD.md",
 		"/C/Users/ASUS/Documents/python_work/Web Application/dm/static_cdn/media/babywei/base.css",
 		"/C/Users/ASUS/Documents/python_work/Web Application/dm/src/templates/list_view.html",
 		"/C/Users/ASUS/Documents/python_work/Web Application/dm/static_cdn/staticfiles/css/base.css",
 		"/C/Users/ASUS/Documents/python_work/Web Application/dm/static_cdn/media/base.css",
 		"/C/Users/ASUS/Documents/python_work/Web Application/dm/src/templates/form.html",
-		"/C/Users/ASUS/Documents/python_work/Web Application/dm/src/templates/detail_view.html",
 		"/C/Users/ASUS/Documents/python_work/Web Application/dm/src/templates/update_view.html",
 		"/C/Users/ASUS/Documents/python_work/Web Application/dm/src/templates/form_include.html",
 		"/C/Users/ASUS/Documents/python_work/Web Application/dm/src/templates/create_view.html",
-		"/C/Users/ASUS/Documents/python_work/Web Application/dm/src/digitalmarket/mixins.py",
-		"/C/Users/ASUS/Documents/python_work/Web Application/dm/src/products/mixins.py",
 		"/C/Users/ASUS/Documents/python_work/Web Application/dm/src/products/migrations/__init__.py",
 		"/C/Users/ASUS/Documents/python_work/Web Application/dm/src/db.sqlite3",
 		"/C/Users/ASUS/Documents/python_work/Web Application/dm/src/products/migrations/0006_auto_20170812_1058.py",
@@ -346,6 +486,9 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"user",
+			"title",
+			"account",
 			"content",
 			"products",
 			"path",
@@ -380,47 +523,19 @@
 			[
 				{
 					"buffer": 0,
-					"file": "src/checkout/views.py",
+					"file": "src/templates/products/product_detail.html",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 547,
+						"buffer_size": 5494,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								340,
-								340
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Python/Python.sublime-syntax"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 1,
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "src/templates/checkout/test.html",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 863,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								492,
-								492
+								2241,
+								2241
 							]
 						],
 						"settings":
@@ -428,7 +543,36 @@
 							"syntax": "Packages/HTML/HTML.sublime-syntax"
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 2565.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "src/sellers/views.py",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2748,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2497,
+								2497
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 675.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,
@@ -436,19 +580,76 @@
 				},
 				{
 					"buffer": 2,
-					"file": "src/templates/base.html",
-					"semi_transient": true,
+					"file": "src/sellers/mixins.py",
+					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1530,
+						"buffer_size": 1525,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1530,
-								1530
+								1502,
+								1502
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 180.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "src/templates/sellers/dashboard.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1215,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1199,
+								1199
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 225.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "src/templates/sellers/transaction_list.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 348,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
 							]
 						],
 						"settings":
@@ -457,10 +658,39 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 945.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 2,
+					"stack_index": 4,
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "src/checkout/views.py",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1897,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 225.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 5,
 					"type": "text"
 				}
 			]
@@ -543,7 +773,7 @@
 	"show_open_files": true,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 162.0,
+	"side_bar_width": 260.0,
 	"status_bar_visible": true,
 	"template_settings":
 	{

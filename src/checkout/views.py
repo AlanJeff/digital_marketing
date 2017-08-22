@@ -2,13 +2,14 @@ import datetime
 
 from django.http import HttpResponse, JsonResponse
 from django.views import View
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 
 from products.models import Product, MyProducts
 
 from digitalmarket.mixins import AjaxRequiredMixin
 
 from billing.models import Transaction
+
 
 class CheckoutAjaxView(AjaxRequiredMixin, View):
 	def post(self, request, *args, **kwargs):
@@ -37,15 +38,16 @@ class CheckoutAjaxView(AjaxRequiredMixin, View):
 		my_products = MyProducts.objects.get_or_create(user=request.user)[0]
 		my_products.products.add(product_obj)
 
+		# request.session['just-purchased'] = "yes"
+
 		download_link = product_obj.get_download()
 		preview_link = download_link + "?preview=True"
 		data = {
 			"download": download_link,
 			"preview": preview_link,
+			# "reload": reload_page,
 		}
 		return JsonResponse(data)
-
-
 
 
 class CheckoutTestView(View):

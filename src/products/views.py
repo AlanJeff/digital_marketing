@@ -5,27 +5,72 @@ from mimetypes import guess_type
 from django.conf import settings
 from wsgiref.util import FileWrapper
 from django.core.urlresolvers import reverse
-from django.db.models import Q 
-from django.http import Http404, HttpResponse
-from django.shortcuts import render, get_object_or_404
+from django.db.models import Q, Avg, Count 
+from django.http import Http404, HttpResponse, JsonResponse
+from django.shortcuts import render, get_object_or_404, redirect 
+from django.views import View
 from django.views.generic.detail import DetailView 
 from django.views.generic.edit import CreateView, UpdateView
 from django.views.generic.list import ListView 
+# from django.views.generic.base import RedirectView
 
 from analytics.models import TagView
 from digitalmarket.mixins import (
 			LoginRequiredMixin,
 			MultiSlugMixin, 
 			SubmitBtnMixin,
+			AjaxRequiredMixin,
 			)
 
+from sellers.models import SellerAccount 
+from sellers.mixins import SellerAccountMixin
 from tags.models import Tag
 
 from .mixins import ProductManagerMixin
-from .models import Product 
+from .models import Product, ProductRating, MyProducts
 from .forms import ProductAddForm, ProductModelForm
 
-class ProductCreateView(LoginRequiredMixin, SubmitBtnMixin, CreateView):
+
+class ProductRatingAjaxView(AjaxRequiredMixin, View):
+	def post(self, request, *args, **kwargs):
+		if not request.user.is_authenticated():
+			return JsonResponse({}, status=401)
+		user = request.user
+		product_id = request.POST.get("product_id")
+		rating_value = request.POST.get("rating_value")
+		exists = Product.objects.filter(id=product_id).exists()
+		if not exists:
+			return JsonResponse({}, status=404)
+
+		try: 
+			product_obj = Product.objects.get(id=product_id)
+		except:
+			product_obj = Product.objects.filter(id=product_id).first() 
+
+		try: 
+			rating_obj = ProductRating.objects.get(user=user, product=product_obj)
+		except ProductRating.MultipleObjectsReturned:
+			rating_obj = ProductRating.objects.filter(user=user, product=product_obj).first()
+		except:
+			# rating_obj = ProductRating.objects.create(user=user, product=product_obj)
+			rating_obj = ProductRating()
+			rating_obj.user = user
+			rating_obj.product = product_obj
+		rating_obj.rating = int(rating_value)
+		
+		myproducts = user.myproducts.products.all()
+		if product_obj in myproducts:
+			rating_obj.verified = True
+		# verify ownership
+		rating_obj.save()
+
+		data = {
+			"success": True
+		}
+		return JsonResponse(data)
+
+
+class ProductCreateView(SellerAccountMixin, SubmitBtnMixin, CreateView):
 	model = Product 
 	template_name = "form.html"
 	form_class = ProductModelForm
@@ -33,10 +78,9 @@ class ProductCreateView(LoginRequiredMixin, SubmitBtnMixin, CreateView):
 	submit_btn = "Add Product"
 
 	def form_valid(self, form):
-		user = self.request.user
-		form.instance.user = user 
+		seller = self.get_account()
+		form.instance.seller = seller
 		valid_data = super(ProductCreateView, self).form_valid(form)
-		form.instance.managers.add(user)
 		# add all default users
 		tags = form.cleaned_data.get("tags")
 		if tags:
@@ -94,14 +138,27 @@ class ProductUpdateView(ProductManagerMixin, SubmitBtnMixin, MultiSlugMixin, Upd
 
 class ProductDetailView(MultiSlugMixin, DetailView):
 	model = Product 
-
 	def get_context_data(self, *args, **kwargs):
 		context = super(ProductDetailView, self).get_context_data(*args, **kwargs)
 		obj = self.get_object()
 		tags = obj.tag_set.all()
-		for tag in tags:
-			new_view = TagView.objects.add_count(self.request.user, tag)
+		rating_avg = obj.productrating_set.aggregate(Avg("rating"), Count("rating"))
+		context["rating_avg"] = rating_avg
+		if self.request.user.is_authenticated():
+			rating_obj = ProductRating.objects.filter(user=self.request.user, product=obj)
+			if rating_obj.exists():
+				context['my_rating'] = rating_obj.first().rating 
+			for tag in tags:
+				new_view = TagView.objects.add_count(self.request.user, tag)
 		return context
+
+	def reload_page(self, request, *args, **kwargs):
+		# if request.session.get('just-purchased') == 'yes':
+		del request.session['just-purchased']
+		current_page = self.obj.get_absolute_url()
+		return redirect(current_page)
+
+
 
 	# def get_object(self, *args, **kwargs):
 	# 	slug = self.kwargs.get("slug")
@@ -134,11 +191,31 @@ class ProductDownloadView(MultiSlugMixin, DetailView):
 			# display the downloaded item in attachment format
 			if not request.GET.get("preview"):
 				response["Content-Disposition"] = "attachment; filename=%s" %(obj.media.name)
-			
+				if request.session.get('just-purchased') == 'yes':
+					del request.session['just-purchased']
+					current_page = request.build_absolute_uri()
+					response = redirect(current_page)
+
 			response["X-SendFile"] = str(obj.media.name)
 			return response 
 		else:
 			raise Http404
+
+
+class SellerProductListView(SellerAccountMixin, ListView):
+	model = Product 
+	template_name = "sellers/product_list_view.html"
+
+	def get_queryset(self, *args, **kwargs):
+		qs = super(SellerProductListView, self).get_queryset(**kwargs)
+		qs = qs.filter(seller=self.get_account())
+		query = self.request.GET.get("q")
+		if query:
+			qs = qs.filter(
+					Q(title__icontains=query)|
+					Q(description__icontains=query)
+				).order_by("title")
+		return qs 
 
 
 class ProductListView(ListView):
@@ -152,6 +229,51 @@ class ProductListView(ListView):
 
 	def get_queryset(self, *args, **kwargs):
 		qs = super(ProductListView, self).get_queryset(**kwargs)
+		query = self.request.GET.get("q")
+		if query:
+			qs = qs.filter(
+					Q(title__icontains=query)|
+					Q(description__icontains=query)
+				).order_by("title")
+		return qs 
+
+
+class VendorListView(ListView):
+	model = Product 
+	template_name = "products/products_list.html"
+
+	def get_object(self):
+		username = self.kwargs.get("vendor_name")
+		seller = get_object_or_404(SellerAccount, user__username=username)
+		return seller 
+
+	def get_context_data(self, *args, **kwargs):
+		context = super(VendorListView, self).get_context_data(*args, **kwargs)
+		context["vendor_name"] = str(self.get_object().user.username)
+		return context
+
+	def get_queryset(self, *args, **kwargs):
+		seller = self.get_object()
+		# (seller__user__username) means:
+		# Product model has the foreign key seller, seller has the foreign key user, user has the field name username
+		# seller that matches a user with the username 'babywei'
+		qs = super(VendorListView, self).get_queryset(**kwargs).filter(seller=seller)
+		query = self.request.GET.get("q")
+		if query:
+			qs = qs.filter(
+					Q(title__icontains=query)|
+					Q(description__icontains=query)
+				).order_by("title")
+		return qs 
+
+
+class UserLibraryListView(LoginRequiredMixin, ListView):
+	model = MyProducts 
+	template_name = "products/library_list.html"
+
+	def get_queryset(self, *args, **kwargs):
+		obj = MyProducts.objects.get_or_create(user=self.request.user)[0]
+		qs = obj.products.all()
 		query = self.request.GET.get("q")
 		if query:
 			qs = qs.filter(

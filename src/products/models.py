@@ -40,6 +40,11 @@ class Product(models.Model):
 		view_name = "products:detail_slug"
 		return reverse(view_name, kwargs={"slug": self.slug})
 
+	def get_edit_url(self):
+		# using url names makes it more dynamic; kwarg = (?P<slug>[\w-]+)
+		view_name = "sellers:product_edit"
+		return reverse(view_name, kwargs={"pk": self.id})
+
 	def get_download(self):
 		# get the /download to redirect to ProductDownloadView
 		view_name = "products:download_slug"
@@ -52,7 +57,15 @@ class Product(models.Model):
 	def get_price(self):
 		if self.sale_price and self.sale_active:
 			return self.sale_price
-		return self.price 
+		return self.price
+
+	def get_html_price(self):
+		price = self.get_price			
+		if price == self.sale_price:
+			return "<p><span>%s</span> <span style='color:red; text-decoration:line-through;'>%s</span> </p>" %(self.sale_price, self.price)
+		else:
+ 			return "<p>%s</p>" %(self.price)
+
 
 def create_slug(instance, new_slug=None):
 	slug = slugify(instance.title)
@@ -185,3 +198,22 @@ class MyProducts(models.Model):
 	class Meta:
 		verbose_name = "My Products"
 		verbose_name_plural = "My Products"
+
+class ProductRating(models.Model):
+	user = models.ForeignKey(settings.AUTH_USER_MODEL)
+	product = models.ForeignKey(Product)
+	rating = models.IntegerField(null=True, blank=True)
+	verified = models.BooleanField(default=False)
+
+	def __str__(self):
+		return "%s" %(self.rating)
+
+
+class CuratedProducts(models.Model):
+	user = models.ForeignKey(settings.AUTH_USER_MODEL)
+	section_name = models.CharField(max_length=120)
+	products = models.ManyToManyField(Product, blank=True)
+	active = models.BooleanField(default=True)
+
+	def __str__(self):
+		return self.section_name

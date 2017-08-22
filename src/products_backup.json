@@ -1,0 +1,168 @@
+[
+{
+    "model": "products.product",
+    "pk": 20,
+    "fields": {
+        "seller": 2,
+        "media": "mountain-view-wallpaper/mountain_view.jpg",
+        "title": "Mountain View Wallpaper",
+        "slug": "mountain-view-wallpaper",
+        "description": "This is a beautiful mountain view taken at North Colorado. It's dawn time and everything is just calm and peaceful. The world is still soundly asleep, and the only rhythm you can hear is the cicadas singing their grating song. \r\n\r\nNo edit. This is a raw picture taken exclusively with Canon EOS 5D Mark III.",
+        "price": "10.00",
+        "sale_active": false,
+        "sale_price": "10.00"
+    }
+},
+{
+    "model": "products.product",
+    "pk": 21,
+    "fields": {
+        "seller": 2,
+        "media": "field-sunrise/horse_at_sunrise.jpg",
+        "title": "Field Sunrise",
+        "slug": "field-sunrise",
+        "description": "The sunrise view at a large field in New Zealand. The air here is fresh and crispy.\r\n\r\nThis is a photographic collection by professional landscape photographer Eden Tang.\r\nCredits to Luddy Ng for the edits.",
+        "price": "11.50",
+        "sale_active": false,
+        "sale_price": "11.50"
+    }
+},
+{
+    "model": "products.product",
+    "pk": 22,
+    "fields": {
+        "seller": 2,
+        "media": "gans-365-ari-master-3x3/gans-iii-gan-3-56-3x3-advanced-v2-black.jpg",
+        "title": "Gans 365 Air Master 3x3",
+        "slug": "gans-365-ari-master-3x3",
+        "description": "The Gans 356 Air is the latest release from Gans. The Gans 356 Air aims to achieve a very lightweight yet stable feel. Many subtle but important design changes have also been made in the Gans 356 Air, which allow it to be even more stable and lightweight than any of its predecessors (as light as 70 grams, depending on the configuration). \r\n\r\nAdditionally, for the Gans 356 Air, Gans has created a patented, color-coded spring elasticity system called the GES (Gans Elasticity System). Please refer to the picture diagrams for more details. \r\n\r\nUsed by some of the best speed cubers in the world such as Feliks Zemdegs.",
+        "price": "25.99",
+        "sale_active": false,
+        "sale_price": "149.99"
+    }
+},
+{
+    "model": "products.product",
+    "pk": 23,
+    "fields": {
+        "seller": 2,
+        "media": "",
+        "title": "GoPro Hero Session",
+        "slug": "gopro-hero-session",
+        "description": "HERO Session is ready for any adventure with its one-button simplicity and compact waterproof design. High resolution of 1440 pixels per inch delivers sharp, professional video.\r\nFrame rates up to 100 frames per second creates smooth slow-motion playback.",
+        "price": "149.99",
+        "sale_active": false,
+        "sale_price": "149.99"
+    }
+},
+{
+    "model": "products.thumbnail",
+    "pk": 13,
+    "fields": {
+        "product": 20,
+        "type": "hd",
+        "height": "333",
+        "width": "500",
+        "media": "mountain-view-wallpaper/mountain_view.jpg"
+    }
+},
+{
+    "model": "products.thumbnail",
+    "pk": 14,
+    "fields": {
+        "product": 20,
+        "type": "sd",
+        "height": "233",
+        "width": "350",
+        "media": "mountain-view-wallpaper/mountain_view_xg0uz2r.jpg"
+    }
+},
+{
+    "model": "products.thumbnail",
+    "pk": 15,
+    "fields": {
+        "product": 20,
+        "type": "micro",
+        "height": "100",
+        "width": "150",
+        "media": "mountain-view-wallpaper/mountain_view_kaeX2Ra.jpg"
+    }
+},
+{
+    "model": "products.thumbnail",
+    "pk": 16,
+    "fields": {
+        "product": 21,
+        "type": "hd",
+        "height": "312",
+        "width": "500",
+        "media": "field-sunrise/horse_at_sunrise.jpg"
+    }
+},
+{
+    "model": "products.thumbnail",
+    "pk": 17,
+    "fields": {
+        "product": 21,
+        "type": "sd",
+        "height": "218",
+        "width": "350",
+        "media": "field-sunrise/horse_at_sunrise_594HMcX.jpg"
+    }
+},
+{
+    "model": "products.thumbnail",
+    "pk": 18,
+    "fields": {
+        "product": 21,
+        "type": "micro",
+        "height": "93",
+        "width": "150",
+        "media": "field-sunrise/horse_at_sunrise_uGvheRR.jpg"
+    }
+},
+{
+    "model": "products.thumbnail",
+    "pk": 19,
+    "fields": {
+        "product": 22,
+        "type": "hd",
+        "height": "500",
+        "width": "500",
+        "media": "gans-365-ari-master-3x3/gans-iii-gan-3-56-3x3-advanced-v2-black.jpg"
+    }
+},
+{
+    "model": "products.thumbnail",
+    "pk": 20,
+    "fields": {
+        "product": 22,
+        "type": "sd",
+        "height": "350",
+        "width": "350",
+        "media": "gans-365-ari-master-3x3/gans-iii-gan-3-56-3x3-advanced-v2-black_EVGnRQD.jpg"
+    }
+},
+{
+    "model": "products.thumbnail",
+    "pk": 21,
+    "fields": {
+        "product": 22,
+        "type": "micro",
+        "height": "150",
+        "width": "150",
+        "media": "gans-365-ari-master-3x3/gans-iii-gan-3-56-3x3-advanced-v2-black_WCXx5pg.jpg"
+    }
+},
+{
+    "model": "products.myproducts",
+    "pk": 2,
+    "fields": {
+        "user": 1,
+        "products": [
+            21,
+            20
+        ]
+    }
+}
+]

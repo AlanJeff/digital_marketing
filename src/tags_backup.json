@@ -1,0 +1,176 @@
+[
+{
+    "model": "tags.tag",
+    "pk": 1,
+    "fields": {
+        "title": "mountain",
+        "slug": "mountain",
+        "active": true,
+        "products": [
+            20
+        ]
+    }
+},
+{
+    "model": "tags.tag",
+    "pk": 2,
+    "fields": {
+        "title": "landscape",
+        "slug": "landscape",
+        "active": true,
+        "products": [
+            20,
+            21,
+            23
+        ]
+    }
+},
+{
+    "model": "tags.tag",
+    "pk": 3,
+    "fields": {
+        "title": "wallpaper",
+        "slug": "wallpaper",
+        "active": true,
+        "products": [
+            20,
+            21
+        ]
+    }
+},
+{
+    "model": "tags.tag",
+    "pk": 4,
+    "fields": {
+        "title": "field",
+        "slug": "field",
+        "active": true,
+        "products": [
+            21
+        ]
+    }
+},
+{
+    "model": "tags.tag",
+    "pk": 8,
+    "fields": {
+        "title": "scenery",
+        "slug": "scenery",
+        "active": true,
+        "products": [
+            20,
+            23
+        ]
+    }
+},
+{
+    "model": "tags.tag",
+    "pk": 9,
+    "fields": {
+        "title": "sky",
+        "slug": "sky",
+        "active": true,
+        "products": [
+            20
+        ]
+    }
+},
+{
+    "model": "tags.tag",
+    "pk": 10,
+    "fields": {
+        "title": "nature",
+        "slug": "nature",
+        "active": true,
+        "products": [
+            20
+        ]
+    }
+},
+{
+    "model": "tags.tag",
+    "pk": 11,
+    "fields": {
+        "title": "cold",
+        "slug": "cold",
+        "active": true,
+        "products": []
+    }
+},
+{
+    "model": "tags.tag",
+    "pk": 12,
+    "fields": {
+        "title": "blue",
+        "slug": "blue",
+        "active": false,
+        "products": []
+    }
+},
+{
+    "model": "tags.tag",
+    "pk": 13,
+    "fields": {
+        "title": "speedcubing",
+        "slug": "speedcubing",
+        "active": true,
+        "products": [
+            22
+        ]
+    }
+},
+{
+    "model": "tags.tag",
+    "pk": 14,
+    "fields": {
+        "title": "rubik's cube",
+        "slug": "rubiks-cube",
+        "active": true,
+        "products": []
+    }
+},
+{
+    "model": "tags.tag",
+    "pk": 15,
+    "fields": {
+        "title": "entertainment",
+        "slug": "entertainment",
+        "active": true,
+        "products": []
+    }
+},
+{
+    "model": "tags.tag",
+    "pk": 16,
+    "fields": {
+        "title": "puzzle",
+        "slug": "puzzle",
+        "active": true,
+        "products": []
+    }
+},
+{
+    "model": "tags.tag",
+    "pk": 17,
+    "fields": {
+        "title": "camera",
+        "slug": "camera",
+        "active": true,
+        "products": [
+            23
+        ]
+    }
+},
+{
+    "model": "tags.tag",
+    "pk": 18,
+    "fields": {
+        "title": "photograph",
+        "slug": "photograph",
+        "active": true,
+        "products": [
+            23
+        ]
+    }
+}
+]

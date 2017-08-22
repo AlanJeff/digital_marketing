@@ -1,0 +1,21 @@
+<table>
+
+<thead>
+	<th>Products</th>
+	<th>User</th>
+	<th>Sale Price</th>
+	<th></th>
+</thead>	
+
+<tbody>
+	{% for trans in transaction_list|dictsortreversed:"timestamp" %}
+	<tr>
+		<td>{{ trans.product }}</td>
+		<td>{{ trans.user }}</td>
+		<td>{{ trans.price }}</td>
+		<td>{{ trans.timestamp|timesince }} ago</td>
+	</tr>
+	{% endfor %}
+</tbody>
+
+</table>
